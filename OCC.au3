@@ -8,7 +8,7 @@
 
 ; #ENVIRONMENT# =================================================================================================================
 ; AutoIt3Wrapper
-#AutoIt3Wrapper_Res_ProductName=Outils Caisse Compagnion
+#AutoIt3Wrapper_Res_ProductName=Outils Caisse Compagnon
 #AutoIt3Wrapper_Res_Description=Permet de copier le NIR dans le presse papier à l'insertion d'un Carte Vitale
 #AutoIt3Wrapper_Res_ProductVersion=1.0.0
 #AutoIt3Wrapper_Res_FileVersion=1.0.0
