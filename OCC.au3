@@ -10,8 +10,8 @@
 ; AutoIt3Wrapper
 #AutoIt3Wrapper_Res_ProductName=Outils Caisse Compagnon
 #AutoIt3Wrapper_Res_Description=Permet de copier le NIR dans le presse papier à l'insertion d'un Carte Vitale
-#AutoIt3Wrapper_Res_ProductVersion=1.0.0
-#AutoIt3Wrapper_Res_FileVersion=1.0.0
+#AutoIt3Wrapper_Res_ProductVersion=1.0.1
+#AutoIt3Wrapper_Res_FileVersion=1.0.1
 #AutoIt3Wrapper_Res_CompanyName=CNAMTS/CPAM_ARTOIS/APPLINAT
 #AutoIt3Wrapper_Res_LegalCopyright=yann.daniel@assurance-maladie.fr
 #AutoIt3Wrapper_Res_Language=1036
@@ -249,7 +249,11 @@ Func _OCCheckCardInsertion()
 			If $bCardInserted = True Then
 				;------------------------------
 				_YDLogger_Log("Insertion carte vitale", $sFuncName)
-				WinWaitActive($hWndOutilCaisse)
+				WinActivate($g_sOCTitle)
+				While WinActive($g_sOCTitle) = 0
+					Sleep(100)
+				Wend
+				_YDLogger_Log("Fenêtre OC activée", $sFuncName)
 				_YDTool_SetTrayTip($g_sAppTitle, "Lecture de la carte vitale ...", 0, $TIP_ICONASTERISK)
 				;------------------------------
 				_YDLogger_Log("Sends pour export du XML", $sFuncName)
@@ -262,7 +266,7 @@ Func _OCCheckCardInsertion()
 				Sleep(200)
 				;------------------------------
 				_YDLogger_Log("Lecture du fichier : " & $g_sXmlFile, $sFuncName)
-				_YDLogger_Log(FileGetTime($g_sXmlFile, $FT_MODIFIED, $FT_STRING), $sFuncName)
+				_YDLogger_Log("FileGetTime : " & FileGetTime($g_sXmlFile, $FT_MODIFIED, $FT_STRING), $sFuncName)
 				If Not FileExists($g_sXmlFile) Then
 					_YDLogger_Error("Le fichier XML n'existe pas : " & $g_sXmlFile, $sFuncName)
 					_YDTool_SetTrayTip($g_sAppTitle, "Erreur récupération infos Carte Vitale", 10000, $TIP_ICONHAND)
