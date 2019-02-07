@@ -10,8 +10,8 @@
 ; AutoIt3Wrapper
 #AutoIt3Wrapper_Res_ProductName=Outils Caisse Compagnon
 #AutoIt3Wrapper_Res_Description=Permet de copier le NIR dans le presse papier à l'insertion d'un Carte Vitale
-#AutoIt3Wrapper_Res_ProductVersion=1.0.1
-#AutoIt3Wrapper_Res_FileVersion=1.0.1
+#AutoIt3Wrapper_Res_ProductVersion=1.0.2
+#AutoIt3Wrapper_Res_FileVersion=1.0.2
 #AutoIt3Wrapper_Res_CompanyName=CNAMTS/CPAM_ARTOIS/APPLINAT
 #AutoIt3Wrapper_Res_LegalCopyright=yann.daniel@assurance-maladie.fr
 #AutoIt3Wrapper_Res_Language=1036
@@ -239,7 +239,7 @@ Func _OCCheckCardInsertion()
 				EndIf
 			Next
 			FileClose($hLogFile)
-			;_YDLogger_Var("$iFileLastLine", $iFileLastLine, $sFuncName)
+			_YDLogger_Var("$iFileLastLine", $iFileLastLine, $sFuncName)
 			_YDLogger_Var("$bCardInserted", $bCardInserted, $sFuncName)
 			;_YDLogger_Var("$hWndOutilCaisse", $hWndOutilCaisse, $sFuncName)
 			;_YDLogger_Var("$iPIDOutilCaisse", $iPIDOutilCaisse, $sFuncName)
