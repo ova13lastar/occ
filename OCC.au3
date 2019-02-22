@@ -56,7 +56,7 @@ _YDGVars_Set("sAppDirLogsPath", @ScriptDir & "\logs")
 _YDGVars_Set("sAppDirVendorPath", @ScriptDir & "\vendor")
 _YDGVars_Set("sAppIconPath", @ScriptDir & "\static\icon.ico")
 _YDGVars_Set("sAppConfFile", @ScriptDir & "\conf.ini")
-_YDGVars_Set("iAppNbDaysToKeepLogFiles", 2)
+_YDGVars_Set("iAppNbDaysToKeepLogFiles", 15)
 
 _YDGVars_Set("sAppOCTitle", "Outils Caisse")
 _YDGVars_Set("sAppOCExeName", "OutilsCaisse.exe")
