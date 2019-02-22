@@ -10,8 +10,8 @@
 ; AutoIt3Wrapper
 #AutoIt3Wrapper_Res_ProductName=Outils Caisse Compagnon
 #AutoIt3Wrapper_Res_Description=Permet de copier le NIR dans le presse papier a l'insertion d'un Carte Vitale
-#AutoIt3Wrapper_Res_ProductVersion=1.2.0
-#AutoIt3Wrapper_Res_FileVersion=1.2.0
+#AutoIt3Wrapper_Res_ProductVersion=1.2.1
+#AutoIt3Wrapper_Res_FileVersion=1.2.1
 #AutoIt3Wrapper_Res_CompanyName=CNAMTS/CPAM_ARTOIS/APPLINAT
 #AutoIt3Wrapper_Res_LegalCopyright=yann.daniel@assurance-maladie.fr
 #AutoIt3Wrapper_Res_Language=1036
@@ -33,8 +33,6 @@
 #Include <WindowsConstants.au3>
 #include <TrayConstants.au3>
 ; Includes
-#include <Array.au3>
-#include <Date.au3>
 #include <String.au3>
 ; Options
 AutoItSetOption("MustDeclareVars", 1)
@@ -58,6 +56,7 @@ _YDGVars_Set("sAppDirLogsPath", @ScriptDir & "\logs")
 _YDGVars_Set("sAppDirVendorPath", @ScriptDir & "\vendor")
 _YDGVars_Set("sAppIconPath", @ScriptDir & "\static\icon.ico")
 _YDGVars_Set("sAppConfFile", @ScriptDir & "\conf.ini")
+_YDGVars_Set("iAppNbDaysToKeepLogFiles", 2)
 
 _YDGVars_Set("sAppOCTitle", "Outils Caisse")
 _YDGVars_Set("sAppOCExeName", "OutilsCaisse.exe")
@@ -71,6 +70,9 @@ _YDLogger_LogAllGVars()
 
 ; #MAIN SCRIPT# =================================================================================================================
 If Not _YDTool_IsSingleton() Then Exit
+;------------------------------
+; On supprime les anciens fichiers de log
+_YDTool_DeleteOldFiles(_YDGVars_Get("sAppDirLogsPath"), _YDGVars_Get("iAppNbDaysToKeepLogFiles"))
 ;------------------------------
 ; On gere l'affichage de l'icone dans le tray
 TraySetIcon(_YDGVars_Get("sAppIconPath"))
