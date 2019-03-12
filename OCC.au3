@@ -10,8 +10,8 @@
 ; AutoIt3Wrapper
 #AutoIt3Wrapper_Res_ProductName=Outils Caisse Compagnon
 #AutoIt3Wrapper_Res_Description=Permet de copier le NIR dans le presse papier a l'insertion d'un Carte Vitale
-#AutoIt3Wrapper_Res_ProductVersion=1.2.1
-#AutoIt3Wrapper_Res_FileVersion=1.2.1
+#AutoIt3Wrapper_Res_ProductVersion=1.2.2
+#AutoIt3Wrapper_Res_FileVersion=1.2.2
 #AutoIt3Wrapper_Res_CompanyName=CNAMTS/CPAM_ARTOIS/APPLINAT
 #AutoIt3Wrapper_Res_LegalCopyright=yann.daniel@assurance-maladie.fr
 #AutoIt3Wrapper_Res_Language=1036
@@ -205,7 +205,7 @@ Func _OCCheckCardInsertion()
 			_YDLogger_Var("$iFileCountLine", $iFileCountLine, $sFuncName, 2)
 			; Si le nb de ligne du fichier < compteur, on reinitialise le compteur a 1
 			If $iFileCountLine < $iFileLastLine Then $iFileLastLine = 1
-			_YDLogger_Var("$iFileLastLine", $iFileLastLine, $sFuncName, 2)
+			_YDLogger_Var("$iFileLastLine (avant)", $iFileLastLine, $sFuncName, 2)
 			; On boucle sur le fichier log pour detecter l insertion d une carte vitale
 			For $i = $iFileCountLine to $iFileLastLine Step -1
 				$sFileLine = FileReadLine($hLogFile, $i)
@@ -223,7 +223,7 @@ Func _OCCheckCardInsertion()
 			;------------------------------
 			; On log les infos utiles
 			_YDLogger_Var("$bCardInserted", $bCardInserted, $sFuncName)
-			_YDLogger_Var("$iFileLastLine", $iFileLastLine, $sFuncName)
+			_YDLogger_Var("$iFileLastLine (apres)", $iFileLastLine, $sFuncName)
 			;------------------------------
 			; On renvoi True si carte vitale rellement inseree
 			If $bCardInserted = True Then Return True
